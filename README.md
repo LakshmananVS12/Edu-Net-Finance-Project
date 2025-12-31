@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💰 Finora - Personal Finance Manager
 
 <div align="center">
@@ -584,3 +585,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [⬆ Back to Top](#-finora---personal-finance-manager)
 
 </div>
+=======
+# Edu-Net-Finance-Project
+
+>>>>>>> 04a3bdfe09699faa1947f5c61e52cb3a927189c4
