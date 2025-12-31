@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgets - Finora</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages/budgets.css">
+</head>
+<body>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+    
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content main-content--with-navbar main-content--with-sidebar">
+        <!-- Visual Header Banner -->
+        <div class="budgets-banner">
+            <div class="budgets-banner__content">
+                <div class="budgets-banner__text">
+                    <h1 class="budgets-banner__title">Budget Management</h1>
+                    <p class="budgets-banner__subtitle">Set spending limits and track your monthly expenses</p>
+                </div>
+                <button class="btn btn--primary btn--contrast" id="add-budget-btn">
+                    <i data-lucide="plus"></i>
+                    Set Budget
+                </button>
+            </div>
+            <div class="budgets-banner__image">
+                <!-- IMAGE PLACEHOLDER: budgets-header.svg
+                     Description: Illustration showing budget planning, money jars, or savings goals
+                     Style: Modern flat illustration with purple accents
+                     Recommended size: 400x250px -->
+                <img src="../../assets/images/undraw_savings_d97f.svg" alt="Budget Planning Illustration">
+            </div>
+        </div>
+
+        <!-- Monthly Summary -->
+        <div class="budget-summary">
+            <div class="budget-summary-card">
+                <div class="budget-summary-card__icon budget-summary-card__icon--total">
+                    <i data-lucide="wallet"></i>
+                </div>
+                <div class="budget-summary-card__content">
+                    <span class="budget-summary-card__label">Total Budget</span>
+                    <span class="budget-summary-card__value" id="total-budget">₹0.00</span>
+                </div>
+            </div>
+            <div class="budget-summary-card">
+                <div class="budget-summary-card__icon budget-summary-card__icon--spent">
+                    <i data-lucide="trending-down"></i>
+                </div>
+                <div class="budget-summary-card__content">
+                    <span class="budget-summary-card__label">Total Spent</span>
+                    <span class="budget-summary-card__value" id="total-spent">₹0.00</span>
+                </div>
+            </div>
+            <div class="budget-summary-card">
+                <div class="budget-summary-card__icon budget-summary-card__icon--remaining">
+                    <i data-lucide="piggy-bank"></i>
+                </div>
+                <div class="budget-summary-card__content">
+                    <span class="budget-summary-card__label">Remaining</span>
+                    <span class="budget-summary-card__value" id="total-remaining">₹0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Month Display -->
+        <div class="month-display">
+            <h2 class="month-display__title">
+                <i data-lucide="calendar"></i>
+                <span id="current-month">December 2025</span>
+            </h2>
+        </div>
+
+        <!-- Budget Cards Grid -->
+        <div class="budgets-grid" id="budgets-grid">
+            <!-- Budget cards will be inserted here by JavaScript -->
+            <div class="loading-state">
+                <p class="text-secondary">Loading budgets...</p>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-budgets" style="display: none;">
+            <!-- IMAGE PLACEHOLDER: empty-budgets.svg
+                 Description: Illustration showing empty wallet or person thinking about budgets
+                 Style: Friendly, encouraging illustration
+                 Recommended size: 300x300px -->
+            <img src="../../assets/images/empty-budgets.svg" alt="No budgets" class="empty-state__image">
+            <h3 class="empty-state__title">No Budgets Set Yet</h3>
+            <p class="empty-state__message">Start managing your spending by setting monthly budgets for different categories</p>
+            <button class="btn btn--primary" onclick="openAddModal()">
+                <i data-lucide="plus"></i>
+                Create Your First Budget
+            </button>
+        </div>
+    </main>
+
+    <!-- Add/Edit Budget Modal -->
+    <div class="modal-overlay" id="budget-modal">
+        <div class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title" id="modal-title">Set Budget</h2>
+                <button class="modal__close" id="close-modal-btn">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <div class="modal__body">
+                <form id="budget-form">
+                    <input type="hidden" id="budget-id">
+                    
+                    <div class="form-group">
+                        <label for="budget-category" class="form-label form-label--required">Category</label>
+                        <select class="form-select" id="budget-category" required>
+                            <option value="">Select Category</option>
+                        </select>
+                        <span class="form-help">Choose an expense category to budget</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget-limit" class="form-label form-label--required">Monthly Limit</label>
+                        <input type="number" class="form-input" id="budget-limit" step="0.01" min="0" placeholder="5000.00" required>
+                        <span class="form-help">Maximum amount you want to spend this month</span>
+                    </div>
+                    
+                    <div class="budget-preview" id="budget-preview" style="display: none;">
+                        <div class="budget-preview__header">
+                            <span class="budget-preview__label">Current Spending</span>
+                            <span class="budget-preview__amount" id="preview-spent">₹0.00</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress__bar" id="preview-progress" style="width: 0%"></div>
+                        </div>
+                        <p class="budget-preview__message" id="preview-message"></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal__footer">
+                <button type="button" class="btn btn--secondary" id="cancel-btn">Cancel</button>
+                <button type="submit" form="budget-form" class="btn btn--primary" id="save-btn">Save Budget</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal modal--small">
+            <div class="modal__header">
+                <h2 class="modal__title">Delete Budget</h2>
+                <button class="modal__close" id="close-delete-modal-btn">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <div class="modal__body">
+                <p>Are you sure you want to delete this budget? This will not affect your transactions.</p>
+            </div>
+            
+            <div class="modal__footer">
+                <button type="button" class="btn btn--secondary" id="cancel-delete-btn">Cancel</button>
+                <button type="button" class="btn btn--danger" id="confirm-delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+    
+    <!-- JavaScript -->
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/state.js"></script>
+    <script src="../../assets/js/router.js"></script>
+    <script src="../../assets/js/loadPartials.js"></script>
+    <script src="../../assets/js/budgets.js"></script>
+</body>
+</html>

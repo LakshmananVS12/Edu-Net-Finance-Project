@@ -1,0 +1,203 @@
+/* ============================================
+   Finora - Illustration & Image Styles
+   ============================================ */
+
+/* Empty State Images */
+.empty-state__image {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto var(--space-xl);
+    opacity: 0.8;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--primary-accent) 0%, #0056b3 100%);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.welcome-banner__content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-banner__title {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    color: #FFFFFF;
+    margin-bottom: var(--space-sm);
+}
+
+.welcome-banner__text {
+    font-size: var(--font-size-body-large);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.welcome-banner__image {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Success Modal Illustration */
+.modal--success .modal__body::before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-lg);
+    background-image: url('../../assets/images/success.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Error Modal Illustration */
+.modal--error .modal__body::before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-lg);
+    background-image: url('../../assets/images/error.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Category Icons with Images */
+.category-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-elevated);
+}
+
+.category-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Decorative Background Patterns */
+.page-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.03;
+    background-image: 
+        radial-gradient(circle at 20% 50%, var(--primary-accent) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, var(--primary-accent) 0%, transparent 50%);
+}
+
+/* Feature Card Images */
+.feature-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+}
+
+/* Loading Skeleton for Images */
+.image-skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surface-elevated) 0%,
+        var(--hover-overlay) 50%,
+        var(--surface-elevated) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Avatar/Profile Images */
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.avatar--large {
+    width: 80px;
+    height: 80px;
+}
+
+.avatar--small {
+    width: 32px;
+    height: 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .welcome-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .welcome-banner__image {
+        max-width: 200px;
+    }
+    
+    .welcome-banner__title {
+        font-size: 24px;
+    }
+    
+    .empty-state__image {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-banner__image {
+        max-width: 150px;
+    }
+    
+    .empty-state__image {
+        max-width: 150px;
+    }
+}

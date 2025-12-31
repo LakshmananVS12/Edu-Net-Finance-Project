@@ -1,0 +1,29 @@
+{
+  "name": "finora-finance-manager",
+  "version": "1.0.0",
+  "description": "Modern personal finance management application - Frontend only implementation",
+  "main": "frontend/index.html",
+  "scripts": {
+    "dev": "npx http-server frontend -p 8000 -o",
+    "dev:live": "npx live-server frontend --port=8000 --open=/index.html",
+    "dev:python": "cd frontend && python -m http.server 8000",
+    "start": "npx http-server frontend -p 8000 -o"
+  },
+  "keywords": [
+    "finance",
+    "personal-finance",
+    "budget-tracker",
+    "expense-tracker",
+    "financial-management",
+    "html5",
+    "css3",
+    "vanilla-javascript"
+  ],
+  "author": "Lakshay",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/finora.git"
+  },
+  "devDependencies": {}
+}

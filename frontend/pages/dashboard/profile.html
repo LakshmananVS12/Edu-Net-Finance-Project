@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Finora</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages/profile.css">
+</head>
+<body class="page--no-sidebar">
+    <!-- Navbar Container -->
+    <div id="navbar-container" class="navbar-container--full-width"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content main-content--with-navbar">
+        <!-- Back Button -->
+        <div class="profile-back">
+            <a href="dashboard.html" class="btn btn--ghost btn--icon" title="Back to Dashboard">
+                <i data-lucide="arrow-left"></i>
+            </a>
+        </div>
+        
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-header__banner">
+                <div class="profile-header__banner-overlay"></div>
+                <!-- Placeholder for banner image -->
+            </div>
+            <div class="profile-header__content">
+                <div class="profile-avatar">
+                    <img src="../../assets/images/default-avatar.png" alt="Profile" id="profile-avatar-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%237C3AED%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2240%22 fill=%22white%22 font-family=%22Arial%22%3EU%3C/text%3E%3C/svg%3E'">
+                    <button class="profile-avatar__edit" id="edit-avatar-btn">
+                        <i data-lucide="camera"></i>
+                    </button>
+                </div>
+                <div class="profile-header__info">
+                    <h1 class="profile-header__name" id="profile-name">User Name</h1>
+                    <p class="profile-header__email" id="profile-email">user@example.com</p>
+                    <p class="profile-header__joined">
+                        <i data-lucide="calendar"></i>
+                        <span>Joined <span id="join-date">December 2025</span></span>
+                    </p>
+                </div>
+                <button class="btn btn--primary" id="edit-profile-btn">
+                    <i data-lucide="edit-2"></i>
+                    Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Personal Information Card -->
+            <div class="profile-card">
+                <div class="profile-card__header">
+                    <h2 class="profile-card__title">
+                        <i data-lucide="user"></i>
+                        Personal Information
+                    </h2>
+                </div>
+                <div class="profile-card__body">
+                    <div class="profile-info-grid">
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Full Name</span>
+                            <span class="profile-info-item__value" id="info-fullname">John Doe</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Email</span>
+                            <span class="profile-info-item__value" id="info-email">john.doe@example.com</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Phone Number</span>
+                            <span class="profile-info-item__value" id="info-phone">+91 98765 43210</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Date of Birth</span>
+                            <span class="profile-info-item__value" id="info-dob">January 1, 1990</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Location</span>
+                            <span class="profile-info-item__value" id="info-location">Mumbai, India</span>
+                        </div>
+                        <div class="profile-info-item">
+                            <span class="profile-info-item__label">Occupation</span>
+                            <span class="profile-info-item__value" id="info-occupation">Software Engineer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Overview Card -->
+            <div class="profile-card">
+                <div class="profile-card__header">
+                    <h2 class="profile-card__title">
+                        <i data-lucide="trending-up"></i>
+                        Financial Overview
+                    </h2>
+                </div>
+                <div class="profile-card__body">
+                    <div class="financial-stats">
+                        <div class="financial-stat">
+                            <div class="financial-stat__icon financial-stat__icon--income">
+                                <i data-lucide="arrow-down-circle"></i>
+                            </div>
+                            <div class="financial-stat__content">
+                                <span class="financial-stat__label">Total Income</span>
+                                <span class="financial-stat__value" id="total-income">₹0.00</span>
+                            </div>
+                        </div>
+                        <div class="financial-stat">
+                            <div class="financial-stat__icon financial-stat__icon--expense">
+                                <i data-lucide="arrow-up-circle"></i>
+                            </div>
+                            <div class="financial-stat__content">
+                                <span class="financial-stat__label">Total Expenses</span>
+                                <span class="financial-stat__value" id="total-expenses">₹0.00</span>
+                            </div>
+                        </div>
+                        <div class="financial-stat">
+                            <div class="financial-stat__icon financial-stat__icon--savings">
+                                <i data-lucide="piggy-bank"></i>
+                            </div>
+                            <div class="financial-stat__content">
+                                <span class="financial-stat__label">Net Savings</span>
+                                <span class="financial-stat__value" id="net-savings">₹0.00</span>
+                            </div>
+                        </div>
+                        <div class="financial-stat">
+                            <div class="financial-stat__icon financial-stat__icon--transactions">
+                                <i data-lucide="receipt"></i>
+                            </div>
+                            <div class="financial-stat__content">
+                                <span class="financial-stat__label">Transactions</span>
+                                <span class="financial-stat__value" id="total-transactions">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Activity Card -->
+            <div class="profile-card">
+                <div class="profile-card__header">
+                    <h2 class="profile-card__title">
+                        <i data-lucide="activity"></i>
+                        Account Activity
+                    </h2>
+                </div>
+                <div class="profile-card__body">
+                    <div class="activity-stats">
+                        <div class="activity-stat">
+                            <i data-lucide="calendar-check"></i>
+                            <div class="activity-stat__content">
+                                <span class="activity-stat__value" id="active-days">0</span>
+                                <span class="activity-stat__label">Active Days</span>
+                            </div>
+                        </div>
+                        <div class="activity-stat">
+                            <i data-lucide="pie-chart"></i>
+                            <div class="activity-stat__content">
+                                <span class="activity-stat__value" id="active-budgets">0</span>
+                                <span class="activity-stat__label">Active Budgets</span>
+                            </div>
+                        </div>
+                        <div class="activity-stat">
+                            <i data-lucide="clock"></i>
+                            <div class="activity-stat__content">
+                                <span class="activity-stat__value" id="last-login">Just now</span>
+                                <span class="activity-stat__label">Last Login</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences Card -->
+            <div class="profile-card">
+                <div class="profile-card__header">
+                    <h2 class="profile-card__title">
+                        <i data-lucide="sliders"></i>
+                        Quick Preferences
+                    </h2>
+                    <a href="settings.html" class="profile-card__link">View All Settings →</a>
+                </div>
+                <div class="profile-card__body">
+                    <div class="preferences-list">
+                        <div class="preference-item">
+                            <div class="preference-item__info">
+                                <i data-lucide="globe"></i>
+                                <div>
+                                    <span class="preference-item__label">Currency</span>
+                                    <span class="preference-item__value">Indian Rupee (₹)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preference-item">
+                            <div class="preference-item__info">
+                                <i data-lucide="palette"></i>
+                                <div>
+                                    <span class="preference-item__label">Theme</span>
+                                    <span class="preference-item__value">Dark Mode</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preference-item">
+                            <div class="preference-item__info">
+                                <i data-lucide="calendar"></i>
+                                <div>
+                                    <span class="preference-item__label">Date Format</span>
+                                    <span class="preference-item__value">DD/MM/YYYY</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="edit-profile-modal">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Edit Profile</h3>
+                <button class="modal__close" id="close-edit-profile">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <form class="modal__body" id="edit-profile-form">
+                <div class="form-group">
+                    <label class="form-label" for="edit-fullname">Full Name</label>
+                    <input type="text" class="form-input" id="edit-fullname" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="edit-phone">Phone Number</label>
+                    <input type="tel" class="form-input" id="edit-phone" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="edit-dob">Date of Birth</label>
+                    <input type="date" class="form-input" id="edit-dob">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="edit-location">Location</label>
+                    <input type="text" class="form-input" id="edit-location" placeholder="Mumbai, India">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="edit-occupation">Occupation</label>
+                    <input type="text" class="form-input" id="edit-occupation" placeholder="Software Engineer">
+                </div>
+            </form>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="cancel-edit-profile">Cancel</button>
+                <button class="btn btn--primary" id="save-profile">
+                    <i data-lucide="save"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Core Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/state.js"></script>
+    <script src="../../assets/js/router.js"></script>
+    <script src="../../assets/js/loadPartials.js"></script>
+    <script src="../../assets/js/profile.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

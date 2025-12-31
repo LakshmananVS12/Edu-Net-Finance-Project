@@ -1,0 +1,714 @@
+/* ============================================
+   Finora - Dashboard Page Styles
+   ============================================ */
+
+/* Dashboard Layout - Collage Style */
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Card takes more space - spans 5 columns */
+.dashboard-summary > :nth-child(1) {
+    grid-column: span 5;
+    grid-row: span 2;
+}
+
+/* Income card */
+.dashboard-summary > :nth-child(2) {
+    grid-column: span 4;
+}
+
+/* Expense card */
+.dashboard-summary > :nth-child(3) {
+    grid-column: span 3;
+}
+
+/* Net Balance card */
+.dashboard-summary > :nth-child(4) {
+    grid-column: span 7;
+}
+
+/* Summary Card Styling */
+.summary-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background-color: var(--surface-elevated);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: slideUp 0.5s ease-out 0s 1 normal forwards running;
+}
+
+.summary-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.summary-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.summary-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.summary-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Ensure cards stay visible after animation */
+.dashboard-summary .summary-card {
+    opacity: 1;
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+.dashboard-summary .summary-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.dashboard-summary .summary-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dashboard-summary .summary-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.dashboard-summary .summary-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 122, 255, 0.15);
+}
+
+.summary-card__icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-fast);
+}
+
+.summary-card:hover .summary-card__icon {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.summary-card__icon i,
+.summary-card__icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--text-primary);
+    stroke: var(--text-primary);
+}
+
+.summary-card__content {
+    flex: 1;
+}
+
+.summary-card__label {
+    font-size: var(--font-size-body);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+}
+
+.summary-card__value {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+/* Dashboard Grid Layout - Asymmetric Collage */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+/* Recent Transactions - larger column */
+.dashboard-grid > :nth-child(1) {
+    grid-column: span 8;
+}
+
+/* Budget Overview - smaller column */
+.dashboard-grid > :nth-child(2) {
+    grid-column: span 4;
+}
+
+/* Professional ATM/Credit Card Styling */
+.card-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: var(--space-2xl) var(--space-xl);
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 1.586 / 1;
+    min-width: 450px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scaleIn 0.6s ease-out;
+}
+
+.card-display:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4), 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Decorative Background Circles */
+.card-display::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -25%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    filter: blur(30px);
+}
+
+.card-display::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -15%;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+/* Card Content Container */
+.card-display__content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* EMV Chip */
+.card-display__chip {
+    width: 60px;
+    height: 48px;
+    background: linear-gradient(135deg, #f5d98b 0%, #d4af37 50%, #c9a961 100%);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--space-md);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Chip Grid Pattern */
+.card-display__chip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 10px);
+}
+
+.card-display__chip::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Card Logo */
+.card-display__logo {
+    position: absolute;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.card-display__logo svg {
+    display: block;
+}
+
+/* Card Number - Single Line */
+.card-display__number {
+    font-size: 28px;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 6px;
+    font-family: 'Courier New', 'Consolas', monospace;
+    margin: var(--space-2xl) 0 var(--space-xl);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Card Details Row */
+.card-display__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-lg);
+}
+
+.card-display__holder {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-display__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.card-display__name {
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-display__expiry {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.card-display__expiry-value {
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    font-family: 'Courier New', 'Consolas', monospace;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Brand Variations */
+.card-display--visa {
+    background: linear-gradient(135deg, #1A1F71 0%, #0F1245 100%);
+}
+
+.card-display--mastercard {
+    background: linear-gradient(135deg, #EB001B 0%, #F79E1B 50%, #FF5F00 100%);
+}
+
+.card-display--amex {
+    background: linear-gradient(135deg, #006FCF 0%, #003D7A 100%);
+}
+
+.card-display--gold {
+    background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
+    color: #1A1A1A;
+}
+
+.card-display--gold .card-display__number,
+.card-display--gold .card-display__name,
+.card-display--gold .card-display__expiry-value {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    color: #1A1A1A;
+}
+
+/* Budget Item */
+.budget-item {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.budget-item:last-child {
+    border-bottom: none;
+}
+
+.budget-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.budget-item__name {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+.budget-item__amount {
+    font-size: var(--font-size-body);
+    color: var(--text-secondary);
+}
+
+.budget-item__progress {
+    margin-top: var(--space-sm);
+}
+
+.budget-item__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-caption);
+    color: var(--text-secondary);
+    margin-top: var(--space-xs);
+}
+
+/* Quick Actions - Bento Box Style */
+.dashboard-actions {
+    margin-top: var(--space-2xl);
+}
+
+.dashboard-actions__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.action-card:hover {
+    border-color: var(--primary-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.2);
+}
+
+.action-card i,
+.action-card svg {
+    width: 36px;
+    height: 36px;
+    color: var(--primary-accent);
+    stroke: var(--primary-accent);
+}
+
+.action-card span {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+/* Content Section Enhancements */
+.content-section {
+    background-color: var(--surface-elevated);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.content-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Welcome Banner with Image
+   ============================================ */
+
+.welcome-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+    padding: var(--space-2xl);
+    background: linear-gradient(135deg, var(--primary-accent) 0%, #0056b3 100%);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2xl);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+}
+
+/* Welcome banner entrance animation */
+.welcome-banner {
+    animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Decorative background circles */
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.welcome-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.welcome-banner__content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+}
+
+.welcome-banner__title {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    color: #FFFFFF;
+    margin-bottom: var(--space-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner__text {
+    font-size: var(--font-size-body-large);
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+}
+
+.welcome-banner__image {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Floating animation for image */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.02);
+    }
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .welcome-banner {
+    background: linear-gradient(135deg, var(--primary-accent) 0%, #0056b3 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .welcome-banner__image {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .welcome-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-xl);
+        min-height: auto;
+    }
+    
+    .welcome-banner__content {
+        max-width: 100%;
+    }
+    
+    .welcome-banner__image {
+        max-width: 300px;
+        margin-top: var(--space-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-banner {
+        padding: var(--space-lg);
+    }
+    
+    .welcome-banner__title {
+        font-size: 24px;
+    }
+    
+    .welcome-banner__text {
+        font-size: var(--font-size-body);
+    }
+    
+    .welcome-banner__image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-banner__title {
+        font-size: 20px;
+    }
+    
+    .welcome-banner__image {
+        max-width: 200px;
+    }
+}
+
+/* Light Mode Adjustments */
+[data-theme="light"] .card-display {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card-display:hover {
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2), 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation on Page Load */
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-display {
+    animation: cardSlideIn 0.6s ease-out;
+}
+
+.summary-card:nth-child(2) { animation: cardSlideIn 0.6s ease-out 0.1s backwards; }
+.summary-card:nth-child(3) { animation: cardSlideIn 0.6s ease-out 0.2s backwards; }
+.summary-card:nth-child(4) { animation: cardSlideIn 0.6s ease-out 0.3s backwards; }
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .dashboard-summary {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .dashboard-summary > :nth-child(1) {
+        grid-column: span 4;
+    }
+    
+    .dashboard-summary > :nth-child(2),
+    .dashboard-summary > :nth-child(3),
+    .dashboard-summary > :nth-child(4) {
+        grid-column: span 4;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-summary {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .dashboard-summary > :nth-child(1) {
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+    
+    .dashboard-summary > :nth-child(2),
+    .dashboard-summary > :nth-child(3),
+    .dashboard-summary > :nth-child(4) {
+        grid-column: span 4;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-grid > :nth-child(1),
+    .dashboard-grid > :nth-child(2) {
+        grid-column: span 1;
+    }
+    
+    .card-display {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-summary {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .dashboard-summary > :nth-child(1),
+    .dashboard-summary > :nth-child(2),
+    .dashboard-summary > :nth-child(3),
+    .dashboard-summary > :nth-child(4) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .card-display {
+        padding: var(--space-lg);
+        min-width: 100%;
+    }
+    
+    .card-display__number {
+        font-size: 22px;
+        letter-spacing: 4px;
+    }
+    
+    .card-display__chip {
+        width: 50px;
+        height: 40px;
+    }
+    
+    .summary-card__value {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-display__number {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    
+    .card-display__name,
+    .card-display__expiry-value {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,41 @@
+﻿<!-- Navbar Component -->
+<nav class="navbar navbar--with-sidebar">
+    <div class="navbar__brand">
+        <img src="../../assets/images/logo.svg" alt="Finora Logo" class="navbar__logo">
+        <h1 class="navbar__title">Finora</h1>
+    </div>
+    
+    <div class="navbar__nav">
+        <div class="navbar__user">
+            <!-- Theme Toggle Button -->
+            <button class="btn btn--icon btn--ghost" onclick="toggleTheme()" title="Toggle theme">
+                <i id="theme-icon" data-lucide="sun"></i>
+            </button>
+            
+            <span class="navbar__user-name">User</span>
+            
+            <div class="navbar__dropdown">
+                <button class="navbar__dropdown-toggle">
+                    <i data-lucide="user"></i>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+                
+                <div class="navbar__dropdown-menu">
+                    <a href="profile.html" class="navbar__dropdown-item">
+                        <i data-lucide="user"></i>
+                        Profile
+                    </a>
+                    <a href="settings.html" class="navbar__dropdown-item">
+                        <i data-lucide="settings"></i>
+                        Settings
+                    </a>
+                    <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--space-xs) 0;">
+                    <a href="#" class="navbar__dropdown-item" id="logout-btn">
+                        <i data-lucide="log-out"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

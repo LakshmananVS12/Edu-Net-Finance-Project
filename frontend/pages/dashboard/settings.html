@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Finora</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages/settings.css">
+</head>
+<body class="page--no-sidebar">
+    <!-- Navbar Container -->
+    <div id="navbar-container" class="navbar-container--full-width"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content main-content--with-navbar">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header__back">
+                <a href="dashboard.html" class="btn btn--ghost btn--icon" title="Back to Dashboard">
+                    <i data-lucide="arrow-left"></i>
+                </a>
+            </div>
+            <div>
+                <h1 class="page-header__title">Settings</h1>
+                <p class="page-header__subtitle">Manage your preferences and account settings</p>
+            </div>
+        </div>
+
+        <!-- Settings Container -->
+        <div class="settings-container">
+            <!-- Settings Navigation -->
+            <div class="settings-nav">
+                <button class="settings-nav__item active" data-section="general">
+                    <i data-lucide="settings"></i>
+                    <span>General</span>
+                </button>
+                <button class="settings-nav__item" data-section="appearance">
+                    <i data-lucide="palette"></i>
+                    <span>Appearance</span>
+                </button>
+                <button class="settings-nav__item" data-section="notifications">
+                    <i data-lucide="bell"></i>
+                    <span>Notifications</span>
+                </button>
+                <button class="settings-nav__item" data-section="security">
+                    <i data-lucide="shield"></i>
+                    <span>Security</span>
+                </button>
+                <button class="settings-nav__item" data-section="data">
+                    <i data-lucide="database"></i>
+                    <span>Data & Privacy</span>
+                </button>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="settings-content">
+                <!-- General Section -->
+                <div class="settings-section active" id="section-general">
+                    <h2 class="settings-section__title">General Settings</h2>
+                    
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Currency</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Default Currency</label>
+                                <p class="settings-item__description">Choose your preferred currency for transactions</p>
+                            </div>
+                            <select class="form-select" id="currency-select">
+                                <option value="INR" selected>Indian Rupee (₹)</option>
+                                <option value="USD">US Dollar ($)</option>
+                                <option value="EUR">Euro (€)</option>
+                                <option value="GBP">British Pound (£)</option>
+                                <option value="JPY">Japanese Yen (¥)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Date & Time</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Date Format</label>
+                                <p class="settings-item__description">How dates are displayed</p>
+                            </div>
+                            <select class="form-select" id="date-format-select">
+                                <option value="DD/MM/YYYY" selected>DD/MM/YYYY</option>
+                                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Time Format</label>
+                                <p class="settings-item__description">12-hour or 24-hour clock</p>
+                            </div>
+                            <select class="form-select" id="time-format-select">
+                                <option value="12" selected>12-hour (AM/PM)</option>
+                                <option value="24">24-hour</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Language</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Display Language</label>
+                                <p class="settings-item__description">Select your preferred language</p>
+                            </div>
+                            <select class="form-select" id="language-select">
+                                <option value="en" selected>English</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Section -->
+                <div class="settings-section" id="section-appearance">
+                    <h2 class="settings-section__title">Appearance</h2>
+                    
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Theme</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Color Theme</label>
+                                <p class="settings-item__description">Choose your preferred color scheme</p>
+                            </div>
+                            <div class="theme-options">
+                                <button class="theme-option active" data-theme="dark">
+                                    <div class="theme-option__preview theme-option__preview--dark">
+                                        <div class="theme-option__preview-bar"></div>
+                                        <div class="theme-option__preview-content"></div>
+                                    </div>
+                                    <span class="theme-option__label">Dark</span>
+                                </button>
+                                <button class="theme-option" data-theme="light">
+                                    <div class="theme-option__preview theme-option__preview--light">
+                                        <div class="theme-option__preview-bar"></div>
+                                        <div class="theme-option__preview-content"></div>
+                                    </div>
+                                    <span class="theme-option__label">Light</span>
+                                </button>
+                                <button class="theme-option" data-theme="auto">
+                                    <div class="theme-option__preview theme-option__preview--auto">
+                                        <div class="theme-option__preview-bar"></div>
+                                        <div class="theme-option__preview-content"></div>
+                                    </div>
+                                    <span class="theme-option__label">Auto</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Display</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Compact Mode</label>
+                                <p class="settings-item__description">Reduce spacing for a more compact layout</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="compact-mode">
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Animations</label>
+                                <p class="settings-item__description">Enable smooth transitions and animations</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="animations-toggle" checked>
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Section -->
+                <div class="settings-section" id="section-notifications">
+                    <h2 class="settings-section__title">Notifications</h2>
+                    
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Email Notifications</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Budget Alerts</label>
+                                <p class="settings-item__description">Get notified when you're close to budget limits</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="budget-alerts" checked>
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Transaction Alerts</label>
+                                <p class="settings-item__description">Receive emails for new transactions</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="transaction-alerts">
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Monthly Reports</label>
+                                <p class="settings-item__description">Get monthly spending summaries via email</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="monthly-reports" checked>
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Push Notifications</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Enable Push Notifications</label>
+                                <p class="settings-item__description">Allow notifications from this app</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="push-notifications">
+                                <span class="toggle__slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Section -->
+                <div class="settings-section" id="section-security">
+                    <h2 class="settings-section__title">Security</h2>
+                    
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Password</h3>
+                        <div class="settings-item settings-item--vertical">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Change Password</label>
+                                <p class="settings-item__description">Update your password regularly for better security</p>
+                            </div>
+                            <button class="btn btn--secondary">
+                                <i data-lucide="key"></i>
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Two-Factor Authentication</h3>
+                        <div class="settings-item">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">2FA Status</label>
+                                <p class="settings-item__description">Add an extra layer of security to your account</p>
+                            </div>
+                            <button class="btn btn--secondary btn--sm">Enable 2FA</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Session Management</h3>
+                        <div class="settings-item settings-item--vertical">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Active Sessions</label>
+                                <p class="settings-item__description">Manage devices where you're logged in</p>
+                            </div>
+                            <button class="btn btn--danger btn--sm">
+                                <i data-lucide="log-out"></i>
+                                Sign Out All Devices
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Privacy Section -->
+                <div class="settings-section" id="section-data">
+                    <h2 class="settings-section__title">Data & Privacy</h2>
+                    
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Data Management</h3>
+                        <div class="settings-item settings-item--vertical">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Export Data</label>
+                                <p class="settings-item__description">Download all your financial data in JSON format</p>
+                            </div>
+                            <button class="btn btn--secondary">
+                                <i data-lucide="download"></i>
+                                Export Data
+                            </button>
+                        </div>
+                        <div class="settings-item settings-item--vertical">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Clear Data</label>
+                                <p class="settings-item__description">Remove all transactions and budgets from your account</p>
+                            </div>
+                            <button class="btn btn--danger">
+                                <i data-lucide="trash-2"></i>
+                                Clear All Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3 class="settings-group__title">Account</h3>
+                        <div class="settings-item settings-item--vertical">
+                            <div class="settings-item__info">
+                                <label class="settings-item__label">Delete Account</label>
+                                <p class="settings-item__description">Permanently delete your account and all associated data</p>
+                            </div>
+                            <button class="btn btn--danger">
+                                <i data-lucide="alert-triangle"></i>
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Core Scripts -->
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/state.js"></script>
+    <script src="../../assets/js/router.js"></script>
+    <script src="../../assets/js/loadPartials.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+﻿/* ============================================
+   Finora - Base Styles
+   Global resets, CSS variables, typography
+   ============================================ */
+
+/* CSS Variables - Fintech Dark Theme */
+:root {
+    /* Color Palette */
+    --primary-accent: #7C3AED;
+    --background-dark: #121212;
+    --surface-elevated: #1C1C1E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --semantic-success: #34C759;
+    --semantic-warning: #FF9500;
+    --semantic-danger: #FF3B30;
+    
+    /* Additional UI Colors */
+    --border-color: #2C2C2E;
+    --hover-overlay: rgba(255, 255, 255, 0.1);
+    --focus-ring: rgba(124, 58, 237, 0.4);
+    
+    /* Spacing System (8px baseline) */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    
+    /* Font Sizes */
+    --font-size-h1: 28px;
+    --font-size-h2: 20px;
+    --font-size-body-large: 16px;
+    --font-size-body: 14px;
+    --font-size-caption: 12px;
+    
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 250ms ease-in-out;
+}
+
+/* Light Mode Variables */
+[data-theme="light"] {
+    --primary-accent: #7C3AED;
+    --background-dark: #FFFFFF;
+    --surface-elevated: #F5F5F7;
+    --text-primary: #000000;
+    --text-secondary: #6E6E73;
+    --semantic-success: #34C759;
+    --semantic-warning: #FF9500;
+    --semantic-danger: #FF3B30;
+    
+    --border-color: #D1D1D6;
+    --hover-overlay: rgba(0, 0, 0, 0.05);
+    --focus-ring: rgba(124, 58, 237, 0.4);
+}
+
+/* ============================================
+   CSS Reset & Normalization
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background-dark);
+    min-height: 100vh;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin: 0;
+    font-weight: var(--font-weight-semibold);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+h3 {
+    font-size: var(--font-size-body-large);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+h4, h5, h6 {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+p {
+    margin: 0;
+    font-size: var(--font-size-body);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-accent);
+    opacity: 0.9;
+}
+
+a:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Text Utilities
+   ============================================ */
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-success {
+    color: var(--semantic-success);
+}
+
+.text-warning {
+    color: var(--semantic-warning);
+}
+
+.text-danger {
+    color: var(--semantic-danger);
+}
+
+.text-accent {
+    color: var(--primary-accent);
+}
+
+.text-large {
+    font-size: var(--font-size-body-large);
+}
+
+.text-small {
+    font-size: var(--font-size-caption);
+}
+
+.text-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.text-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ============================================
+   Lists
+   ============================================ */
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================
+   Images & Media
+   ============================================ */
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   Forms & Inputs
+   ============================================ */
+
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ============================================
+   Accessibility & Focus States
+   ============================================ */
+
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================
+   Scrollbar Styling (Dark Theme)
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) var(--background-dark);
+}
+
+/* Light mode scrollbar adjustments */
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+}
+
+/* ============================================
+   Animation System
+   ============================================ */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+.animate-slide-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Staggered Animation Delays */
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+    animation-delay: 0.5s;
+}
+
+.animate-delay-6 {
+    animation-delay: 0.6s;
+}
+
+/* Loading Shimmer Effect */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surface-elevated) 0%,
+        var(--hover-overlay) 50%,
+        var(--surface-elevated) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+    border-radius: var(--radius-md);
+}
+
+/* Smooth Transitions */
+.transition-all {
+    transition: all var(--transition-fast);
+}
+
+.transition-colors {
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.transition-transform {
+    transition: transform var(--transition-fast);
+}
+
+.transition-opacity {
+    transition: opacity var(--transition-fast);
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Reduced Motion Support - Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hover-lift:hover {
+        transform: none;
+    }
+}
+
+
+

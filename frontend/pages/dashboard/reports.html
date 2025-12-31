@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Finora</title>
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages/reports.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div id="sidebar-container"></div>
+    
+    <main class="main-content main-content--with-navbar main-content--with-sidebar">
+        <div class="reports-banner">
+            <div class="reports-banner__content">
+                <div class="reports-banner__text">
+                    <h1 class="reports-banner__title">Financial Reports</h1>
+                    <p class="reports-banner__subtitle">Analyze your spending patterns and income trends</p>
+                </div>
+            </div>
+            <div class="reports-banner__image">
+                <img src="../../assets/images/undraw_data-reports_l2u3.svg" alt="Reports Illustration" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <div class="reports-content">
+            <div class="period-toggle">
+                <button class="toggle-btn active" data-period="current-month">
+                    <i data-lucide="calendar"></i>
+                    <span>This Month</span>
+                </button>
+                <button class="toggle-btn" data-period="last-month">
+                    <i data-lucide="calendar-minus"></i>
+                    <span>Last Month</span>
+                </button>
+                <button class="toggle-btn" data-period="year">
+                    <i data-lucide="calendar-range"></i>
+                    <span>This Year</span>
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card stat-card--income">
+                    <div class="stat-card__icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <span class="stat-label">Total Income</span>
+                        <span class="stat-value" id="income-value">₹0</span>
+                        <span class="stat-change" id="income-change"></span>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--expense">
+                    <div class="stat-card__icon">
+                        <i data-lucide="trending-down"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <span class="stat-label">Total Expenses</span>
+                        <span class="stat-value" id="expense-value">₹0</span>
+                        <span class="stat-change" id="expense-change"></span>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--savings">
+                    <div class="stat-card__icon">
+                        <i data-lucide="piggy-bank"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <span class="stat-label">Net Savings</span>
+                        <span class="stat-value" id="savings-value">₹0</span>
+                        <span class="stat-change" id="savings-change"></span>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--rate">
+                    <div class="stat-card__icon">
+                        <i data-lucide="percent"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <span class="stat-label">Savings Rate</span>
+                        <span class="stat-value" id="rate-value">0%</span>
+                        <span class="stat-change" id="rate-change"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights & Top Spending Drivers -->
+            <div class="insights-grid">
+                <div class="insights-card">
+                    <div class="insights-card__header">
+                        <i data-lucide="lightbulb" class="insights-card__icon"></i>
+                        <h2 class="insights-card__title">Key Insights</h2>
+                    </div>
+                    <ul class="insights-list" id="insights-list">
+                        <li class="insights-item">
+                            <i data-lucide="info"></i>
+                            <span>Loading insights...</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="insights-card">
+                    <div class="insights-card__header">
+                        <i data-lucide="trending-up" class="insights-card__icon"></i>
+                        <h2 class="insights-card__title">Top Spending Drivers</h2>
+                    </div>
+                    <div class="drivers-list" id="drivers-list">
+                        <div class="driver-item">
+                            <span>Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h2 class="chart-card__title">Category Breakdown</h2>
+                    <div class="chart-card__body">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h2 class="chart-card__title">Income vs Expenses</h2>
+                    <div class="chart-card__body">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Comparison Table -->
+            <div class="comparison-section">
+                <h2 class="comparison-title">Category Comparison</h2>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table" id="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>This Month</th>
+                                <th>Last Month</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparison-tbody">
+                            <tr>
+                                <td colspan="4" class="comparison-loading">Loading comparison data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Summary Footer -->
+        <div class="report-footer">
+            <div class="report-footer__summary">
+                <h3 class="report-footer__title">Report Summary</h3>
+                <div class="report-footer__stats">
+                    <div class="footer-stat">
+                        <span class="footer-stat__label">Period:</span>
+                        <span class="footer-stat__value" id="footer-period">This Month</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="footer-stat__label">Total Income:</span>
+                        <span class="footer-stat__value footer-stat__value--income" id="footer-income">₹0</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="footer-stat__label">Total Expenses:</span>
+                        <span class="footer-stat__value footer-stat__value--expense" id="footer-expense">₹0</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="footer-stat__label">Net Savings:</span>
+                        <span class="footer-stat__value footer-stat__value--savings" id="footer-savings">₹0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-footer__actions">
+                <button class="btn btn--secondary" id="download-btn">
+                    <i data-lucide="download"></i>
+                    <span>Download Report</span>
+                </button>
+                <button class="btn btn--secondary" id="share-btn">
+                    <i data-lucide="share-2"></i>
+                    <span>Share</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/state.js"></script>
+    <script src="../../assets/js/router.js"></script>
+    <script src="../../assets/js/loadPartials.js"></script>
+    <script src="../../assets/js/reports.js"></script>
+</body>
+</html>
