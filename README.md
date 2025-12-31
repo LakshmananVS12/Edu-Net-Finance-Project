@@ -561,9 +561,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
-**Project Maintainer** - [@yourusername](https://github.com/yourusername)
+**Project Maintainer** - [@LakshmananVS12](https://github.com/LakshmananVS12)
 
-**Project Link** - [https://github.com/yourusername/finora](https://github.com/yourusername/finora)
+**Project Link** - [https://github.com/yourusername/finora](https://github.com/LakshmananVS12finora)
 
 ---
 
